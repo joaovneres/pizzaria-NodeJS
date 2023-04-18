@@ -4,7 +4,7 @@ import { CreateUserController } from "./controllers/user/CreateUserController";
 const router = Router();
 
 //-----------ROTAS PARA USER-----------//
-router.post("/user", new CreateUserController().handle);
+router.post('/user', new CreateUserController().handle);
 
 // Exportação da constante router para acesso de outros arquivos
 export { router };

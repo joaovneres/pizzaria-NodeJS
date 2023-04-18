@@ -9,10 +9,12 @@ const app = express();
 
 // Passando para o servidor que a comunicação de Request será através de JSON
 app.use(express.json());
-app.use(cors);
 
+// Se o router não for o primeiro, não será possível fazer a requisição, porque a ordem importa
 // Definindo que a aplicação utilizará as rotas fornecidas no arquivo routes.ts
 app.use(router);
+
+app.use(cors);
 
 // Midleware para tratamento de erros em rotas
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
