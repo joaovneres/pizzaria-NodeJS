@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { CreateUserController } from "./controllers/user/CreateUserController";
+import { AuthUserController } from "./controllers/user/AuthUserController";
 // Instanciando a constante router como do tipo Router
 const router = Router();
 
 //-----------ROTAS PARA USER-----------//
-router.post('/user', new CreateUserController().handle);
+router.post("/user", new CreateUserController().handle);
+
+router.post("/session", new AuthUserController().handle);
 
 // Exportação da constante router para acesso de outros arquivos
 export { router };
