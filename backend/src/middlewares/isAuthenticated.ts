@@ -1,4 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import { verify } from "jsonwebtoken";
+
+interface PayLoad {
+  sub: string;
+}
 
 export function isAuthenticated(
   req: Request,
@@ -13,5 +18,17 @@ export function isAuthenticated(
     return res.status(401).end();
   }
 
-  console.log(authToken);
+  // Essa vírgula faz ignorar o primeiro elemento quando faz o split
+  // Peguei o token e dividi, peguei somente o que vem na segunda posição
+  const [, token] = authToken.split(" ");
+
+  try {
+    // validação do token
+    const { sub } = verify(token, process.env.JWT_SECRET) as PayLoad;
+    console.log(sub);
+    return next();
+  } catch (error) {
+    console.log(error);
+    return res.status(401).end();
+  }
 }
