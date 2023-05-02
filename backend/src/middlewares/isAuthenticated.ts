@@ -25,7 +25,7 @@ export function isAuthenticated(
   try {
     // validação do token
     const { sub } = verify(token, process.env.JWT_SECRET) as PayLoad;
-    console.log(sub);
+    req.user_id = sub;
     return next();
   } catch (error) {
     console.log(error);
