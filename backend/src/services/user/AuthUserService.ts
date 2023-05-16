@@ -38,7 +38,7 @@ class AuthUserService {
       // dados opcionais
       {
         subject: user.id,
-        expiresIn: "2m",
+        expiresIn: "10m",
       }
     );
     return {

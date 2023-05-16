@@ -1,7 +1,9 @@
 // Importações
-import express, { Request, Response, NextFunction, Router } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors"; // Tratamento de erros do servidor
 import cors from "cors";
+import path from "path";
+
 import { router } from "./routes";
 
 // A aplicação será executada pelo servidor express
@@ -13,7 +15,7 @@ app.use(express.json());
 // Se o router não for o primeiro, não será possível fazer a requisição, porque a ordem importa
 // Definindo que a aplicação utilizará as rotas fornecidas no arquivo routes.ts
 app.use(router);
-
+app.use("/files", express.static(path.resolve(__dirname, "..", "tmp")));
 app.use(cors);
 
 // Midleware para tratamento de erros em rotas
