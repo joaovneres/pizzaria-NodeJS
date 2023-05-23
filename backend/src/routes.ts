@@ -10,6 +10,7 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import uploadConfig from "./config/multer";
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
 
 // Instanciando a constante router como do tipo Router
 const router = Router();
@@ -44,6 +45,9 @@ router.get(
   isAuthenticated,
   new ListByCategoryController().handle
 );
+
+//-----------ROTAS PARA ORDER-----------//
+router.post("/order", isAuthenticated, new CreateOrderController().handle);
 
 // Exportação da constante router para acesso de outros arquivos
 export { router };
