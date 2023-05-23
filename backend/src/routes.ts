@@ -11,6 +11,8 @@ import uploadConfig from "./config/multer";
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
+import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
+import { AddItemController } from "./controllers/order/AddItemController";
 
 // Instanciando a constante router como do tipo Router
 const router = Router();
@@ -49,6 +51,13 @@ router.get(
 //-----------ROTAS PARA ORDER-----------//
 router.post("/order", isAuthenticated, new CreateOrderController().handle);
 
+router.delete(
+  "/deleteorder",
+  isAuthenticated,
+  new RemoveOrderController().handle
+);
+
+router.post("/order/add", isAuthenticated, new AddItemController().handle);
 // Exportação da constante router para acesso de outros arquivos
 export { router };
 
