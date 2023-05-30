@@ -13,6 +13,9 @@ import { ListByCategoryController } from "./controllers/product/ListByCategoryCo
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
 import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 import { AddItemController } from "./controllers/order/AddItemController";
+import { RemoveItemController } from "./controllers/order/RemoveItemController";
+import { SendOrderController } from "./controllers/order/SendOrderController";
+import { DetailsOrderController } from "./controllers/order/DetailsOrderController";
 
 // Instanciando a constante router como do tipo Router
 const router = Router();
@@ -58,6 +61,20 @@ router.delete(
 );
 
 router.post("/order/add", isAuthenticated, new AddItemController().handle);
+
+router.delete(
+  "/order/delete",
+  isAuthenticated,
+  new RemoveItemController().handle
+);
+
+router.put("/sendorder", isAuthenticated, new SendOrderController().handle);
+
+router.get(
+  "/detailsorder",
+  isAuthenticated,
+  new DetailsOrderController().handle
+);
 // Exportação da constante router para acesso de outros arquivos
 export { router };
 
