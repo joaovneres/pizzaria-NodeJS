@@ -16,6 +16,8 @@ import { AddItemController } from "./controllers/order/AddItemController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
 import { DetailsOrderController } from "./controllers/order/DetailsOrderController";
+import { ListOrderController } from "./controllers/order/ListOrderController";
+import { FinishOrderController } from "./controllers/order/FinishOrderController";
 
 // Instanciando a constante router como do tipo Router
 const router = Router();
@@ -75,6 +77,11 @@ router.get(
   isAuthenticated,
   new DetailsOrderController().handle
 );
+
+router.get("/latestorders", isAuthenticated, new ListOrderController().handle);
+
+router.get("/finishorder", isAuthenticated, new FinishOrderController().handle);
+
 // Exportação da constante router para acesso de outros arquivos
 export { router };
 
