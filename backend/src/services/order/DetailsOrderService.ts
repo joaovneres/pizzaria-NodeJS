@@ -12,6 +12,9 @@ class DetailsOrderService {
       },
     });
 
+    if (!order) {
+      throw new Error("Pedido inválido");
+    }
     const items = await prismaClient.item.findMany({
       where: {
         id_pedido: id_pedido,
