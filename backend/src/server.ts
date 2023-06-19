@@ -1,6 +1,5 @@
-// Importações
 import express, { Request, Response, NextFunction, Router } from "express";
-import "express-async-errors"; // Tratamento de erros do servidor
+import "express-async-errors";
 import cors from "cors";
 import { router } from "./routes";
 
@@ -35,4 +34,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // A aplicação rodará na porta 3333
-app.listen(3333, () => console.log("Servidor ON"));
+app.listen(3333, () => console.log(`Servidor ON`));
